@@ -1,12 +1,38 @@
 <!-- file name: index.html  -->
 <!-- pwd : /home/src/roomManager/app/templates/main/index.html -->
-<html>
+<!DOCTYPE html>
+<html lang="ja">
   <head>
-    This is the main page
+    <meta charset="UTF-8" />
+    <title>Room Manager</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
-
   <body>
-    This is the main page<br>
-    test : {{ htmlData }}
+    <header>
+      <div class="row">
+        <h1>Room Manager</h1>
+        <div class="header-right">
+          <a href="/login">aaaa</a>
+          <a href="/signup">wwww</a>
+          <a href="/logout">qqqq</a>
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="lcd">
+        <!-- LCDモニターのプレビューと入力を行う -->
+        <h1>LCD previw</h1>
+      </div>
+      <div class="status">
+        <!-- room statusを表示 -->
+        <h1>room status</h1>
+      </div>
+      <div class="row">
+        <!-- ボタンを表示 -->
+        <a href="">button1</a>
+        <a href="">button2</a>
+        <a href="">button3</a>
+      </div>
+    </div>
   </body>
 </html>
