@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Room Manager</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
   </head>
 
   <body>
@@ -23,19 +23,21 @@
 
     <div class="wrappar">
         <div class="content">
+
+            <div class="status">
+                <!-- room statusを表示 -->
+                <h1>
+                    {{status}}
+                </h1>
+            </div>
+
             <div class="lcd">
                 <!-- LCDモニターのプレビューと入力を行う -->
                 <h3>Enter message on LCD</h3>
                     <form class="lcd_form" action="/main" method="post">
                         <input class="lcd_form" type="text" name="message" />
                     </form>
-            </div>
-            <div class="status">
-                <!-- room statusを表示 -->
-                <h1>
-                    index : {{status}}
-                </h1>
-            </div>
+                </div>
 
             <div class="row">
                 <!-- ボタンを表示 -->
