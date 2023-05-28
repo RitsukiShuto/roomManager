@@ -35,12 +35,13 @@
                 <!-- LCDモニターのプレビューと入力を行う -->
                 <h3>Enter message on LCD</h3>
                     <form class="lcd_form" action="/main" method="post">
-                        <input class="lcd_form" type="text" name="message" />
+                        <input class="lcd_form" type="text" name="message"
+                         placeholder={{displaying_message}}/>
                     </form>
                 </div>
 
             <div class="row">
-                <!-- ボタンを表示 -->
+                    <!-- ボタンを表示 -->
                     <input name="status" type="radio" value="0" />
                     <label>対応可能</label>
 
@@ -55,7 +56,7 @@
                 <!-- リセットボタンと送信ボタンを表示 -->
                 <input name="reset" type="reset" value="reset" />
                 <input name="submit" type="submit" value="submit" />
-        </div>
+            </div>
     </div>
 
   </body>

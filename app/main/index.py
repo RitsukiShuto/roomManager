@@ -12,5 +12,6 @@ main = Blueprint('main', __name__, url_prefix='/')
 # index.htmlを参照してtestDataをテンプレートのhtmlDataに設定して表示する
 def index():
     status = '作業中'
+    displaying_message = 'Hello World'
 
-    return render_template('/main/index.html', status=status)
+    return render_template('/main/index.html', displaying_message=displaying_message, status=status)
