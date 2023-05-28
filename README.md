@@ -33,7 +33,28 @@ Flask  1.0.2
 
 # ディレクトリの構成
 ```
-.
-├── README.md
-├── run.py
+roomManager
+└─app
+   ├─main
+   │  └─index.py
+   ├─static
+   │  └─css
+   │      └─style.css
+   ├─templates
+   │  └─main
+   │      └─index.html
+   └─run.py
 ```
+
+# 2.ディレクトリの中身
+## app/main/index.py
+index.pyはアプリケーションのメイン画面を表示するためのファイル。
+
+## app/static/css/style.css
+style.cssはアプリケーションのスタイルシートを定義するためのファイル。
+
+## app/templates/main/index.html
+index.htmlはアプリケーションのメイン画面を表示するためのファイル。
+
+## app/run.py
+run.pyはアプリケーションを起動するためのファイル。
