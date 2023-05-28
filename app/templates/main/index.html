@@ -21,24 +21,33 @@
         </div>
     </div>
 
-    <div class="content">
-        <div class="wrappar">
+    <div class="wrappar">
+        <div class="content">
             <div class="lcd">
                 <!-- LCDモニターのプレビューと入力を行う -->
                 <h3>Enter message on LCD</h3>
-                    <form action="/main" method="post">
-                    <input type="text" name="message" />
-                    <input type="submit" value="submit" />
+                    <form class="lcd_form" action="/main" method="post">
+                        <input class="lcd_form" type="text" name="message" />
+                        <input class="lcd_form" type="submit" value="submit" />
+                    </form>
             </div>
             <div class="status">
                 <!-- room statusを表示 -->
                 <h1>仮置き</h1>
             </div>
+
             <div class="row">
                 <!-- ボタンを表示 -->
-                <a href="">button1</a>
-                <a href="">button2</a>
-                <a href="">button3</a>
+                    <input name="status" type="radio" value="0" />
+                    <label>対応可能</label>
+
+                    <input name="status" type="radio" value="1" />
+                    <label>作業中</label>
+
+                    <input name="status" type="radio" value="2" />
+                    <label>対応不可</label>
+            </div>
+            
         </div>
     </div>
 
