@@ -14,9 +14,10 @@
         <div class="row">
             <h1>Room Manager</h1>
             <div class="header-right">
-                <a href="/login">aaaa</a>
-                <a href="/signup">wwww</a>
-                <a href="/logout">qqqq</a>
+                <a href="/login">Home</a>
+                 <a href="/logout">Preset</a>
+                <a href="/signup">Calendar</a>
+                <a href="/logout">Settings</a>
             </div>
         </div>
     </div>
@@ -25,6 +26,8 @@
         <div class="content">
 
             <div class="status">
+                <!-- すでに実行中の予定があれば表示する -->
+                <h3 class="warning">{{warning}}</h3>
                 <!-- room statusを表示 -->
                 <h1>
                     {{status}}
@@ -36,25 +39,25 @@
                 <h3>Enter message on LCD</h3>
                     <form class="lcd_form" action="/main" method="post">
                         <input class="lcd_form" type="text" name="message"
-                         placeholder={{displaying_message}}/>
+                         placeholder={{message}}>
                 </div>
 
             <div class="row">
                     <!-- ボタンを表示 -->
-                    <input name="status" type="radio" value="対応可能" checked={{}}/>
+                    <input name="status" type="radio" value="対応可能" {{available}}>
                     <label>対応可能</label>
 
-                    <input name="status" type="radio" value="作業中" checked={{}}/>
+                    <input name="status" type="radio" value="作業中" {{working}}>
                     <label>作業中</label>
 
-                    <input name="status" type="radio" value="対応不可" checked={{}}/>
+                    <input name="status" type="radio" value="対応不可" {{not_available}}>
                     <label>対応不可</label>
             </div>
 
             <div class="reset_and_submit">
                 <!-- リセットボタンと送信ボタンを表示 -->
-                <input name="reset" type="reset" value="reset" />
-                <input name="submit" type="submit" value="submit" />
+                <input name="reset" type="reset" value="reset">
+                <input name="submit" type="submit" value="submit">
                 </form>
             </div>
     </div>
