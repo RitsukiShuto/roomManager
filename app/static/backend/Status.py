@@ -4,9 +4,9 @@
 
 class Status:
     def __init__(self):
-        self.status
-        self.message
-        self.end_time
+        self.status = ''
+        self.message = ''
+        self.end_time = ''
         self.isInSchedule = False
 
     def setStatus(self, status, message, time):
