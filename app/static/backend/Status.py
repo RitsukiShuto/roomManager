@@ -3,16 +3,18 @@
 #
 
 class Status:
+    
     def __init__(self):
         self.status = ''
         self.message = ''
         self.end_time = ''
         self.isInSchedule = False
 
-    def setStatus(self, status, message, time):
+    def setStatus(self, status, message, time, isInSchedule):
         self.status = status
         self.message = message
         self.end_time = time
+        self.isInSchedule = True
 
     def setStatus(self, status, message):
         self.status = status
