@@ -14,7 +14,12 @@ main = Blueprint('main', __name__, url_prefix='/')
 def index():
     nowStatus = Status()
 
-    return render_template('/main/index.html', message=nowStatus.message, status=nowStatus.status)
+    try:
+        return render_template('/main/index.html', message=nowStatus.message, status=nowStatus.status,)
+    
+    except Exception as e:
+        print(e)
+        return render_template('/main/index.html', message='エラーが発生しました', status='error')
 
 # フォームのデータを受け取る
 @main.route('/main', methods=['POST'])
@@ -23,8 +28,8 @@ def post():
     nowStatus = Status()
 
     # 受け取ったデータをコンソールに表示
-    print(request.form['status'])
-    print(request.form['message'])
+    # print(request.form['status'])
+    # print(request.form['message'])
 
     # 受け取ったデータをセット
     nowStatus.setStatus(request.form['status'], request.form['message'])
