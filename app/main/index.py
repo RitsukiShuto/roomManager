@@ -4,6 +4,8 @@
 #
 from flask import Blueprint, render_template, request
 
+from app.static.backend.Status import Status
+
 main = Blueprint('main', __name__, url_prefix='/')
 
 # ルートディレクトリにアクセスしたときの処理
@@ -11,23 +13,8 @@ main = Blueprint('main', __name__, url_prefix='/')
 
 # index.htmlを参照してtestDataをテンプレートのhtmlDataに設定して表示する
 def index():
-    status = '作業中'
-    displaying_message = 'Hello World'
+    nowStatus = Status()
 
-    return render_template('/main/index.html', displaying_message=displaying_message, status=status)
+    nowStatus.setStatus('test', 'test')
 
-@main.route('/main', methods=['POST'])
-def getFrom():
-    print("POSTデータを受け取った")
-
-    # レスポンスコードが403以外のときは、エラーを表示する
-    if request.method != 403:
-        return render_template('/main/index.html', displaying_message='', status='')
-
-    message = request.form["message"]
-    status = request.form["status"]
-
-    print(f'フォームからPOSTされたデータは、{message}です。')
-    print(f'ラジオボタンは、{status}です。')
-
-    return render_template('/main/index.html', displaying_message=message, status=status)
+    return render_template('/main/index.html', message=nowStatus.message, status=nowStatus.status)
