@@ -4,6 +4,8 @@
 #
 from flask import Blueprint, render_template, request
 from app.static.backend.Status import Status
+from app.static.backend.GetActivity import callGetActivity
+from app.static.backend.GetByDiscordActivity import MyClient, runGetActivity
 
 main = Blueprint('main', __name__, url_prefix='/')
 
@@ -12,7 +14,7 @@ main = Blueprint('main', __name__, url_prefix='/')
 
 # index.htmlを参照してtestDataをテンプレートのhtmlDataに設定して表示する
 def index():
-    nowStatus = Status()
+    callGetActivity()
 
     try:
         return render_template('/main/index.html', message=nowStatus.message, status=nowStatus.status,)
@@ -20,6 +22,7 @@ def index():
     except Exception as e:
         print(e)
         return render_template('/main/index.html', message='エラーが発生しました', status='error')
+
 
 # フォームのデータを受け取る
 @main.route('/main', methods=['POST'])

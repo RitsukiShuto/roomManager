@@ -2,3 +2,7 @@ __pycache__
 app/__pycache__
 app/main/__pycache__
 app/static/backend/token
+.devcontainer/devcontainer.json
+.devcontainer/dockerfile
+.vscode/settings.json
+app/__init__.py
