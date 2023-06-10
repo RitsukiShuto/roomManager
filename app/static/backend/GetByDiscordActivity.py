@@ -2,12 +2,9 @@
 # Discordのアクティビティを取得するクラス
 #
 import discord
-import Status
 
 global game
 global client
-
-setByDiscordActivity = Status.Status()
 
 class MyClient(discord.Client):
     # 起動時に動作する処理
@@ -22,7 +19,9 @@ class MyClient(discord.Client):
             print("member is None.")
             return
 
-        getDiscordActivity(member)
+        game = getDiscordActivity(member)
+
+        return game
 
     # メッセージ受信時に動作する処理
     async def on_message(self, message):
@@ -35,7 +34,9 @@ class MyClient(discord.Client):
         # メッセージの内容によって返信する
         if message.content == '/getact':
             member = discord.utils.get(self.get_all_members())
-            getDiscordActivity(member)
+            game = getDiscordActivity(member)
+
+        return game
 
     # プロフィールが更新されたときに動作する処理
     async def on_member_update(self, before, after):
@@ -56,15 +57,33 @@ def getDiscordActivity(member):
 
     else:
         game = member.activity.name
-        setByDiscordActivity.setStatus("対応不可", game)
+        print(game)
 
-        # インスタンスへの格納成功
-        print("Success to set status. " + setByDiscordActivity.message + " is set.")
+# webAppから起動した時
+def runGetActivity(client):
+    global game
 
-        # index.pyに返す
-        return setByDiscordActivity
+    #setByDiscordActivity = Status()
+
+    # Botのトークンを読み込む
+    try:                            # webAppから起動した時
+        with open('token/discoToken.txt', 'r') as f:
+            TOKEN = f.read()
+    
+    except FileNotFoundError:       # デバッガから起動した時
+        print("Token file is not found.")
+        print("open token file by debug mode.")
+
+        with open('app/static/backend/token/discoToken.txt', 'r') as f:
+            TOKEN = f.read()
+
+    client.run(TOKEN)
+    
 
 def main():
+
+    #setByDiscordActivity = Status()
+
     # Botのトークンを読み込む
     try:                            # webAppから起動した時
         with open('token/discoToken.txt', 'r') as f:
@@ -84,5 +103,5 @@ def main():
     client = MyClient(intents=intents)
     client.run(TOKEN)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
