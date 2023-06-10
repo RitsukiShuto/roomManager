@@ -2,10 +2,12 @@
 # Discordのアクティビティを取得するクラス
 #
 import discord
-from discord.ext import commands
+import Status
 
 global game
 global client
+
+setByDiscordActivity = Status.Status()
 
 class MyClient(discord.Client):
     # 起動時に動作する処理
@@ -54,7 +56,13 @@ def getDiscordActivity(member):
 
     else:
         game = member.activity.name
-        print(game)
+        setByDiscordActivity.setStatus("対応不可", game)
+
+        # インスタンスへの格納成功
+        print("Success to set status. " + setByDiscordActivity.message + " is set.")
+
+        # index.pyに返す
+        return setByDiscordActivity
 
 def main():
     # Botのトークンを読み込む
